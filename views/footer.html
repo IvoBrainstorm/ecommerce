@@ -76,12 +76,12 @@
 </div> <!-- End footer bottom area -->
 
 <!-- Latest jQuery form server -->
-<script src="https://code.jquery.com/jquery.min.js"></script>
-<!-- <script src="/res/site/js/jquery-3.3.1.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/jquery.min.js"></script> -->
+<script src="/res/site/js/jquery-3.3.1.min.js"></script>
 
 <!-- Bootstrap JS form CDN -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<!-- <script src="/res/site/js/bootstrap.min.js"></script> -->
+<!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+<script src="/res/site/js/bootstrap.min.js"></script>
 
 <!-- jQuery sticky menu -->
 <script src="/res/site/js/owl.carousel.min.js"></script>
