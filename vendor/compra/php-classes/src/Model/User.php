@@ -1,8 +1,8 @@
 <?php
 
-namespace Hcode\Model;
-use \Hcode\DB\Sql;
-use \Hcode\Model;
+namespace Compra\Model;
+use \Compra\DB\Sql;
+use \Compra\Model;
 
 class User extends Model{
 

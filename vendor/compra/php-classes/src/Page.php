@@ -1,6 +1,6 @@
 <?php
 
-namespace Hcode;
+namespace Compra;
 
 use Rain\Tpl;
 
