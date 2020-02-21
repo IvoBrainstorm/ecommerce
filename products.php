@@ -8,17 +8,18 @@ $app -> get("/admin/products", function(){
 
 	User::verifyLogin();
 
-	$product = Product::listAll();
+	$products = Product::listAll();
 
 	$page = new PageAdmin();
 	$page -> setTpl("products", [
-		'products' => $product
+		'products' => $products
 	]);
 
 });
 
 
 $app -> get("/admin/products/create", function(){
+
 	User::verifyLogin();
 
 	$page = new PageAdmin();
@@ -29,8 +30,7 @@ $app -> get("/admin/products/create", function(){
 
 $app -> post("/admin/products/create", function(){
 	User::verifyLogin();
-	$page = new PageAdmin();
-
+	
 	$product = new Product();
 
 	$product -> setData($_POST);
@@ -68,6 +68,7 @@ $app -> post("/admin/products/:idproduct", function($idproduct){
 
 	header("Location: /admin/products");
 	exit;
+
 });
 
 
@@ -77,7 +78,6 @@ $app -> get("/admin/products/:idproduct/delete", function($idproduct){
 	$product = new Product();
 
 	$product -> get((int)$idproduct);
-	$product -> setData($_POST);
 	$product -> delete();
 
 	header("Location: /admin/products");

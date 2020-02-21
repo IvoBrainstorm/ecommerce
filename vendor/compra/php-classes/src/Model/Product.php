@@ -15,6 +15,18 @@ class Product extends Model{
         return $sql->select("SELECT * FROM tb_products ORDER BY desproduct");
     }
 
+    public static function checkList($list)
+    {
+        foreach ($list as &$row) {
+
+            $p = new Product();
+            $p->setData($row);
+            $row = $p->getValues();
+        }
+
+        return $list;
+    }
+
     public function save()
     {
         $sql = new Sql();
@@ -62,7 +74,7 @@ class Product extends Model{
         "site" . DIRECTORY_SEPARATOR .
         "img" . DIRECTORY_SEPARATOR .
         "products" . DIRECTORY_SEPARATOR . 
-        $this -> getidproduct() . "jpg")){
+        $this -> getidproduct() . ".jpg")){
             $url = "/res/site/img/products/" . $this -> getidproduct() . "jpg";
         }else{
             $url = "/res/site/img/product.jpg";
@@ -80,19 +92,19 @@ class Product extends Model{
 
     public function setPhoto($file)
     {
-        $extention = explode('.', $file["tmp_name"]);
+        $extention = explode('.', $file["name"]);
         $extention = end($extention);
 
-        switch ($variable) {
+        switch ($extention) {
             case "jpg":
             case "jpeg":
                 $image = imagecreatefromjpeg($file["tmp_name"]);
                 break;
             case "gif":
-                $image = imagecreatefromjpeg($file["tmp_name"]);
+                $image = imagecreatefromgif($file["tmp_name"]);
                 break;
             case "png":
-                $image = imagecreatefromjpeg($file["tmp_name"]);
+                $image = imagecreatefrompng($file["tmp_name"]);
                 break;
         }
 
@@ -101,12 +113,11 @@ class Product extends Model{
         "site" . DIRECTORY_SEPARATOR .
         "img" . DIRECTORY_SEPARATOR .
         "products" . DIRECTORY_SEPARATOR . 
-        $this -> getidproduct() . "jpg";
+        $this -> getidproduct() . ".jpg";
 
         imagejpeg($image, $dis);
-        imagedestry($image);
-
-        $this -> checkphoto();
+        imagedestroy($image);
+        $this->checkPhoto();
 
     }
 
